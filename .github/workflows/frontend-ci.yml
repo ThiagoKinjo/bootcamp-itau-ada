@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - front-end
+      - Front-end
 #    paths:
 #      - 'frontend/**'
 
