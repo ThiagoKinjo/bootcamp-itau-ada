@@ -1,9 +1,15 @@
 name: Build frontend app and deploy
 
+
+
 on:
+  workflow_dispatch:
   push:
     branches:
-      - main
+      - frontend
+  push:
+    branches:
+      - frontend
     paths:
       - 'frontend/**'
 
@@ -26,17 +32,3 @@ jobs:
 
       - name: Test
         run: ng test
-
-      - name: Login to GitHub Packages
-        uses: docker/login-action@v1
-        with:
-          registry: docker.pkg.github.com
-          username: ThiagoKinjo
-          password: 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
-
-      - name: Push Docker image to GitHub Packages
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          push: true
-          tags: docker.pkg.github.com/${{ github.repository }}/frontend:latest
