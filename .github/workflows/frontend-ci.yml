@@ -18,10 +18,15 @@ jobs:
 
       - name: Install dependencies
         run: |
-          apt-get update && apt-get -y install npm
-          npm install -g @angular/cli
+          sudo apt-get update
+          sudo apt-get install nodejs npm -y
       - name: Build Docker image
         run: |
+          cd frontend
+          npm install
+          npm run build
           docker build -t frontend .
       - name: Test
         run: ng test
+      - name: List files in directory
+        run: ls
