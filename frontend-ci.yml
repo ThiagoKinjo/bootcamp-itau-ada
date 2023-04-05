@@ -31,8 +31,8 @@ jobs:
         uses: docker/login-action@v1
         with:
           registry: docker.pkg.github.com
-          username: ${{ github.actor }}
-          password: ${{ secrets.GITHUB_TOKEN }}
+          username: ThiagoKinjo
+          password: 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
 
       - name: Push Docker image to GitHub Packages
         uses: docker/build-push-action@v2
