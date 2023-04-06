@@ -1,40 +1,30 @@
 name: Build frontend app and deploy
 
+#defaults:
+#  run:
+#    working-directory: "frontend/"
+
 on:
   workflow_dispatch:
   push:
     branches:
-      - Front-end
-#    paths:
-#      - 'frontend/**'
+      - frontend 
 
 jobs:
   BuildAndDeploy:
-    name: Build frontend app and deploy
+    name: Build frontend
     runs-on: self-hosted
-
     steps:
-#       - uses: actions/checkout@v3
-
-      - name: Install dependencies
-        run: |
-          sudo apt-get update
-          sudo apt-get install nodejs npm -y
-      - name: Build Docker image
-        run: |
+    - uses: actions/checkout@v3
+    
+    - name: teste frontend
+      run: |
+          sudo npm install -g n
+          sudo apt-get update && sudo apt-get -y install npm
+          sudo npm install -g @angular/cli
+          ng test
+    
+    - name: build frontend
+      run: |
           cd frontend
-          npm install
-          npm run build
-          docker build -t frontend .
-      - name: Test
-        run: ng test
-      - name: List files in directory
-        run: ls
-        
-  TestDocker:
-    name: Test frontend
-    runs-on: self-hosted
-    steps:
-  #      - uses: actions/checkout@v3
-      - run: ng test
-    needs: [BuildAndDeploy]
+          docker build . -t frontend 
