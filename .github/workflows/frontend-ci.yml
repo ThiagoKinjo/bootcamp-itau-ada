@@ -5,8 +5,8 @@ on:
   push:
     branches:
       - Front-end
-#    paths:#
-#      - 'frontend/**'#
+#    paths:
+#      - 'frontend/**'
 
 jobs:
   BuildAndDeploy:
