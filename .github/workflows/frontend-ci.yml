@@ -1,9 +1,5 @@
 name: Build frontend app and deploy
 
-#defaults:
-#  run:
-#    working-directory: "frontend/"
-
 on:
   workflow_dispatch:
   push:
@@ -15,16 +11,19 @@ jobs:
     name: Build frontend
     runs-on: self-hosted
     steps:
-    - uses: actions/checkout@v3
-    
-    - name: teste frontend
-      run: |
+      - uses: actions/checkout@v3
+      
+      - name: Install dependencies
+        run: |
           sudo npm install -g n
           sudo apt-get update && sudo apt-get -y install npm
           sudo npm install -g @angular/cli
-          ng test
-    
-    - name: build frontend
-      run: |
+          
+      - name: Run tests
+        run: ng test
+        
+      - name: Build frontend
+        run: |
           cd frontend
-          docker build . -t frontend 
+          docker build . -t frontend
+
