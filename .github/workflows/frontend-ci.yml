@@ -6,6 +6,7 @@ on:
     branches:
       - frontend 
 
+
 jobs:
   BuildAndDeploy:
     name: Build frontend
