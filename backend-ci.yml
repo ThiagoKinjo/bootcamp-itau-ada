@@ -2,15 +2,15 @@ name: Test and Build backend app
 
 defaults:
   run:
-    working-directory: "backend/app"
+    working-directory: "backend"
 
 on:
   workflow_dispatch:
   push:
     branches:
-    - main
-    paths:
-    - 'backend/**'
+    - Back-end
+#    paths:
+#    - 'backend/**'
 
 jobs:
   TestAndBuild:
