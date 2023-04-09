@@ -8,9 +8,9 @@ on:
   workflow_dispatch:
   push:
     branches:
-    - backend
-#    paths:
-#    - 'backend/**'
+    - Back-end
+    paths:
+    - 'Back-end/**'
 
 jobs:
   TestAndBuild:
@@ -36,5 +36,5 @@ jobs:
     
     - name: Build and push image
       run: |
-        docker build -t ghcr.io/raphaeljpivato/backend-app:latest .
-        docker push ghcr.io/raphaeljpivato/backend-app:latest
+        docker build -t ghcr.io/ThiagoKinjo/backend-app:latest .
+        docker push ghcr.io/ThiagoKinjo/backend-app:latest
