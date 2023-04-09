@@ -2,7 +2,7 @@ name: Test and Build backend app
 
 defaults:
   run:
-    working-directory: "Back-end"
+    working-directory: "backend"
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ on:
     branches:
     - Back-end
     paths:
-    - 'Back-end/**'
+    - 'backend/**'
 
 jobs:
   TestAndBuild:
